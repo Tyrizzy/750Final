@@ -2,19 +2,19 @@
 
 Your Name
 
-Tyare Daniels
+- Tyare Daniels
 
 Project Title & Description
 
-Fly-Bi is a side scrolling action game where you have to avoid brick walls in order to make it to the end.
+- Fly-Bi is a side scrolling action game where you have to avoid brick walls in order to make it to the end.
 
 Genre
 
-Side-Scroller, Action
+- Side-Scroller, Action
 
 Your motivation
 
-I wanted to create something simple so i had time to implement all of the needed requiremnts. I took inspiration from flappy bird because of the parralx backgound. I then added my twists to the game with controler input and more.
+- I wanted to create something simple so i had time to implement all of the needed requiremnts. I took inspiration from flappy bird because of the parralx backgound. I then added my twists to the game with controler input and more.
 
 Key technical aspects
 
@@ -32,59 +32,59 @@ Unit Tests - I intially tried to implement this and realzized for my game i coul
 
 Structure (if applicable)
 
-NA
+- NA
 
 Engine used and version#/build (UE, Unity, Cry, Godot, O3DE, etc.)
 
-Unity Version 2022.3.18f1
+- Unity Version 2022.3.18f1
 
 Dependencies, and if any packages need to be installed
 
-NA
+- NA
 
 Platform Target Build (Win, Linux, OS, iOS, MacOs, Android,etc) & Run Instructions
 
-Windows. 
+- Windows. 
 
-To Run the game download the builded verison and open the exe.
+- To Run the game download the builded verison and open the exe.
 
 Features - List the key features of the project. Briefly describe how these features work and their significance
 
-Controller Input - Used unitys new input system to handle the controllers input for the game and UI. This allows you to play with either the arrow keys, A & D, and a controller.
+- Controller Input - Used unitys new input system to handle the controllers input for the game and UI. This allows you to play with either the arrow keys, A & D, and a controller.
 
-Moving Camera, Walls, WallSpawner, EndPointSpawner - The camera and walls are similer in function. The CameraMove script just translats the camera postion by a specified number dictated by the difficulty * Time. The MovePipes script works the same except it uses the camerea it find the left edge of the camera's nearClipPlane then when its postions is less then it will be destroyed. The PipeSwaner uses the cameras nearClipPlane to spawn the pipes on the right side of the camera at a random Y. The EndPointSpawner takes in a specifed vector3 which is where the finish line will be at. It will also calculate the distance from the playter to the finish line and update the UI to show how much further you have to go.
+- Moving Camera, Walls, WallSpawner, EndPointSpawner - The camera and walls are similer in function. The CameraMove script just translats the camera postion by a specified number dictated by the difficulty * Time. The MovePipes script works the same except it uses the camerea it find the left edge of the camera's nearClipPlane then when its postions is less then it will be destroyed. The PipeSwaner uses the cameras nearClipPlane to spawn the pipes on the right side of the camera at a random Y. The EndPointSpawner takes in a specifed vector3 which is where the finish line will be at. It will also calculate the distance from the playter to the finish line and update the UI to show how much further you have to go.
 
-Easy, Medium, and Hard Mode - EasyMode has the values PipeSpeed = 3, CameraSpeed = 3, SpawnTime = 3, EndPoint = new Vector3(50,0,0). MediumMode has the values PipeSpeed = 10, CameraSpeed = 3, SpawnTime = 1, EndPoint = new Vector3(75,0,0). HardMode has the values PipeSpeed = 20, CameraSpeed = 5, SpawnTime = 1, EndPoint = new Vector3(100,0,0).
+- Easy, Medium, and Hard Mode - EasyMode has the values PipeSpeed = 3, CameraSpeed = 3, SpawnTime = 3, EndPoint = new Vector3(50,0,0). MediumMode has the values PipeSpeed = 10, CameraSpeed = 3, SpawnTime = 1, EndPoint = new Vector3(75,0,0). HardMode has the values PipeSpeed = 20, CameraSpeed = 5, SpawnTime = 1, EndPoint = new Vector3(100,0,0).
 
 Gameplay instructions (Controls) Keyboard, Mouse or other hardware if applicable
 
-Mouse and keyboard. A/arrow left and D/arrow right to move, Space to jump, Enter to select in menus.
+- Mouse and keyboard. A/arrow left and D/arrow right to move, Space to jump, Enter to select in menus.
 
-Controller Gamepad, Left and Right to move, X/A respectivly to jump and select.
+- Controller Gamepad, Left and Right to move, X/A respectivly to jump and select.
 
 Known Issues/Notes - Bugs, issues or limitations with potential workarounds
 
-When switching scenes the menus UI breaks with controller input, however, if you die and restart in the level scene you'll be able to use your controller in the menus. Same happens if you go back to the main menu.
+- When switching scenes the menus UI breaks with controller input, however, if you die and restart in the level scene you'll be able to use your controller in the menus. Same happens if you go back to the main menu.
 
 Credits (if you collaborated with another student/if applicable)
 
-I used fellow classmate Tessla's UI system from prvious projects we worked on together.
+- I used fellow classmate Tessla's UI system from prvious projects we worked on together.
 
 Art/Design
 
-Simple shapes and textures. Found free parralx backgrounds.
+- Simple shapes and textures. Found free parralx backgrounds.
 
 UX/UI
 
-Simple UI
+- Simple UI
 
 Audio
 
-No audio
+- No audio
 
 Other
 
-NA
+- NA
 
 Screenshot or 10 second demo video.
 
