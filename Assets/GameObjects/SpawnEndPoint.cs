@@ -6,14 +6,12 @@ using UnityEngine.UIElements;
 public class SpawnEndPoint : MonoBehaviour
 {
     GameManager gameManager;
-    GameUI gameUI;
     GameObject Player;
     TMP_Text DistUI;
 
     private void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();
-        gameUI = FindAnyObjectByType<GameUI>();
         DistUI = GameObject.Find("DistanceText").GetComponent<TMP_Text>();
         Player = GameObject.Find("Player");
     }
@@ -33,7 +31,7 @@ public class SpawnEndPoint : MonoBehaviour
             if (Player.transform.position.x >= this.transform.position.x)
             {
                 gameManager.isPlayerWon = true;
-                gameManager.Win();
+                DestroyImmediate(Player);
             }
         }
     }

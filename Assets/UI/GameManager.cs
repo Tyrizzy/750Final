@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
 
     [Header("First Selected Menu Items")]
     [SerializeField] GameObject StartScreen;
-    [SerializeField] GameObject LevelScreen; //
-    [SerializeField] GameObject ControlsScreen; //
+    [SerializeField] GameObject LevelScreen; 
+    [SerializeField] GameObject ControlsScreen; 
     [SerializeField] GameObject PauseScreen;
     [SerializeField] GameObject DeathScreen;
     [SerializeField] GameObject WinScreen;
-    [SerializeField] GameObject EndConfirmationScreen; //
+    [SerializeField] GameObject EndConfirmationScreen; 
 
     private enum Modes { Easy, Medium, Hard, UnitTest };
     Modes modes;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             // Prevents duplicate instances of the game manager.
             Destroy(gameObject);
         }
-        EventSystem.current.SetSelectedGameObject(StartScreen);
+        CurrentScreen();
     }
 
     void Update()
@@ -83,13 +83,6 @@ public class GameManager : MonoBehaviour
                 SpawnTime = 1;
                 EndPoint = new Vector3(100,0,0);
                 break;
-
-            case Modes.UnitTest:
-                PipeSpeed = 1;
-                CameraSpeed = 1;
-                SpawnTime = 1;
-                EndPoint = new Vector3(100, 0, 0);
-                break;
             default:
                 break;
         }
@@ -103,6 +96,11 @@ public class GameManager : MonoBehaviour
         if (isPlayerDead)
         {
             Death();
+        }
+
+        if (isPlayerWon)
+        {
+            Win();
         }
     }
 
@@ -118,7 +116,7 @@ public class GameManager : MonoBehaviour
         {
             // Set Pause Screen Active
             GameUI.Instance.SetIsScreenActive("Pause Screen", true);
-            EventSystem.current.SetSelectedGameObject(PauseScreen);
+            CurrentScreen();
             Time.timeScale = 0f;
         }
         // Unpause logic
@@ -140,7 +138,8 @@ public class GameManager : MonoBehaviour
         {
             // Set Death Screen Active
             GameUI.Instance.SetIsScreenActive("Death Screen", true);
-            //EventSystem.current.SetSelectedGameObject(DeathScreen);
+            CurrentScreen();
+            isPlayerDead = false;
             Time.timeScale = 0f;
         }
     }
@@ -154,7 +153,8 @@ public class GameManager : MonoBehaviour
         {
             // Set Win Screen Active
             GameUI.Instance.SetIsScreenActive("Win Screen", true);
-            //EventSystem.current.SetSelectedGameObject(WinScreen);
+            CurrentScreen();
+            isPlayerWon = false;
             Time.timeScale = 0f;
         }
     }
@@ -164,17 +164,12 @@ public class GameManager : MonoBehaviour
         // Don't do in start menu
         if (GameUI.Instance.IsScreenActive("Start Screen")) return;
 
-        if (isPlayerDead || isPlayerWon)
-        {
-            isPlayerDead = false;
-            isPlayerWon = false;
-            Time.timeScale = 1f;
-            GameUI.Instance.SetAllScreensActive(false);
-            GameUI.Instance.SetIsScreenActive("Start Screen", true);
-            EventSystem.current.SetSelectedGameObject(StartScreen);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            GameDebugger.DebugLog(1, "Loading Main Menu");
-        }
+        Time.timeScale = 1f;
+        GameUI.Instance.SetAllScreensActive(false);
+        GameUI.Instance.SetIsScreenActive("Start Screen", true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        CurrentScreen();
+        GameDebugger.DebugLog(1, "Loading Main Menu");
     }
 
     public void Restart()
@@ -182,15 +177,11 @@ public class GameManager : MonoBehaviour
         // Don't do in start menu
         if (GameUI.Instance.IsScreenActive("Start Screen")) return;
 
-        if (isPlayerDead)
-        {
-            isPlayerDead = false;
-            Time.timeScale = 1f;
-            GameUI.Instance.SetAllScreensActive(false);
-            GameUI.Instance.SetIsScreenActive("Player UI", true);
-            GameDebugger.DebugLog(1, "Reloading Scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        Time.timeScale = 1f;
+        GameUI.Instance.SetAllScreensActive(false);
+        GameUI.Instance.SetIsScreenActive("Player UI", true);
+        GameDebugger.DebugLog(1, "Reloading Scene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit()
@@ -231,38 +222,41 @@ public class GameManager : MonoBehaviour
         GameDebugger.DebugLog(1, "Loading HardMode");
     }
 
-    public void StartSelect()
+    public void CurrentScreen()
     {
-        EventSystem.current.SetSelectedGameObject(StartScreen);
-    }
+        if (GameUI.Instance.IsScreenActive("Start Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(StartScreen);
+        }
 
-    public void LevelSelect()
-    {
-        EventSystem.current.SetSelectedGameObject(LevelScreen);
-    }
+        else if (GameUI.Instance.IsScreenActive("Level Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(LevelScreen);
+        }
 
-    public void ConrtolSelect()
-    {
-        EventSystem.current.SetSelectedGameObject(ControlsScreen);
-    }
+        else if (GameUI.Instance.IsScreenActive("Controls Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(ControlsScreen);
+        }
 
-    public void PauseSelect()
-    {
-        EventSystem.current.SetSelectedGameObject(PauseScreen);
-    }
+        else if (GameUI.Instance.IsScreenActive("Pause Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(PauseScreen);
+        }
 
-    public void DeathSelect()
-    {
-        EventSystem.current.SetSelectedGameObject(DeathScreen);
-    }
+        else if (GameUI.Instance.IsScreenActive("Death Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(DeathScreen);
+        }
 
-    public void WinSelect()
-    {
-        EventSystem.current.SetSelectedGameObject(WinScreen);
-    }
+        else if (GameUI.Instance.IsScreenActive("Win Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(WinScreen);
+        }
 
-    public void EndConfirm()
-    {
-        EventSystem.current.SetSelectedGameObject(EndConfirmationScreen);
+        else if (GameUI.Instance.IsScreenActive("End Confirmation Screen"))
+        {
+            EventSystem.current.SetSelectedGameObject(EndConfirmationScreen);
+        }
     }
 }

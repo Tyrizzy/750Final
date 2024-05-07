@@ -80,4 +80,13 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = context.ReadValue<Vector2>().x;
         GameDebugger.DebugLog(4, "Player Moved: " + Horizontal);
     }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            gameManager.Pause();
+            GameDebugger.DebugLog(9, "Player Paused: " + Horizontal);
+        }
+    }
 }
