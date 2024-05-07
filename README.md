@@ -20,15 +20,15 @@ Key technical aspects
 
 Physics - I created my own PhysicsController script that handled things like linear drag, mass, gravity, objects velocity, and if the object is static. The goal was to have similer features that a Unity Rigidbody would have if applicable for my game.
 
-Quadtree Collision Detection - I created my own QuadTree class that handled all the logic to create the bounds, keep track of the level, nodes, and to find all of the objects in the scene that has my created BoundingBox script. This script mimics unitys 2D Box colliders using the sprite renderer to obtain the objects corners and draw them. For the actual detection of the collisions my CollsioionDetectionQuadTree2D script handles that; It contantly checks for the active Objects with my BoundingBox on them then if the two objects touch im using SAT to detect if the objects touched/overlap and if they do they will destroy the object, in my case only if the objects tag is "Player". If its not a player it will calculate the mtv and serpeate the objects.
+- Quadtree Collision Detection - I created my own QuadTree class that handled all the logic to create the bounds, keep track of the level, nodes, and to find all of the objects in the scene that has my created BoundingBox script. This script mimics unitys 2D Box colliders using the sprite renderer to obtain the objects corners and draw them. For the actual detection of the collisions my CollsioionDetectionQuadTree2D script handles that; It contantly checks for the active Objects with my BoundingBox on them then if the two objects touch im using SAT to detect if the objects touched/overlap and if they do they will destroy the object, in my case only if the objects tag is "Player". If its not a player it will calculate the mtv and serpeate the objects.
 
-Anti-Cheat Detection & Code Structure - As for the anti-cheat i used the website that Prof. Niko gave us. The algortithm i choose 2.4. Patch ntdll!DbgUiRemoteBreakin() because it checks the ntdll!DbgUiRemoteBreakin() which is always called in tandum with kernel32!DebugActiveProcess(). In doing so when the code detects this it will immidatly close the game. I also changed the stripping level to high and the scripting backend to IL2CPP to give it some more security.
+- Anti-Cheat Detection & Code Structure - As for the anti-cheat i used the website that Prof. Niko gave us. The algortithm i choose 2.4. Patch ntdll!DbgUiRemoteBreakin() because it checks the ntdll!DbgUiRemoteBreakin() which is always called in tandum with kernel32!DebugActiveProcess(). In doing so when the code detects this it will immidatly close the game. I also changed the stripping level to high and the scripting backend to IL2CPP to give it some more security.
 
-UI/UX - For the UI of the game I used my friend Tessla's UI system beacause it handles really well and fit what i needed it for. I then added my own canvas prefabs and design to it. I also had to create a system that allows you to use your controller to navitage the menus but actuivly changing the EventSystems first selected menu item.
+- UI/UX - For the UI of the game I used my friend Tessla's UI system beacause it handles really well and fit what i needed it for. I then added my own canvas prefabs and design to it. I also had to create a system that allows you to use your controller to navitage the menus but actuivly changing the EventSystems first selected menu item.
 
-9 Level Debugger - I creatd my own GameDebugger script that reads command line arguments to find if you wrote "750Final -GD:(1-9)". Depending on the number you put it it'll display those messages inside my custom DebuggerConsole assuming they are activly being called. It will always show you basic info (1) even if you dont start it from cmd. If there does happen to be any warnings or errors the colors of the text will be yellow and red respectivly. Ive also added buttons for the custom Console so that you can open, close, and clear it.
+- 9 Level Debugger - I creatd my own GameDebugger script that reads command line arguments to find if you wrote "750Final -GD:(1-9)". Depending on the number you put it it'll display those messages inside my custom DebuggerConsole assuming they are activly being called. It will always show you basic info (1) even if you dont start it from cmd. If there does happen to be any warnings or errors the colors of the text will be yellow and red respectivly. Ive also added buttons for the custom Console so that you can open, close, and clear it.
 
-Unit Tests - I intially tried to implement this and realzized for my game i couldnt think of more then one kind of uni test which would test its performacnce by spawning a ton of my custom particles (Gameobjects) but i ended up scraping it.
+- Unit Tests - I intially tried to implement this and realzized for my game i couldnt think of more then one kind of uni test which would test its performacnce by spawning a ton of my custom particles (Gameobjects) but i ended up scraping it.
 
 Structure (if applicable)
 
@@ -90,12 +90,12 @@ Screenshot or 10 second demo video.
 
 Describe your additional subsystems.
 
-Particle System manager and implementaion - Created my own ParticleSys script that handles things like the color, mass, size, speed, lifetime, rotation, and a total particle count for my custom debugger. Inside my SpawnParticle function the speed is used to randomly have the particles move, the size controls the size of the gaemeobject, my physics script takes in the particles mass and the particles velocity. 
+- Particle System manager and implementaion - Created my own ParticleSys script that handles things like the color, mass, size, speed, lifetime, rotation, and a total particle count for my custom debugger. Inside my SpawnParticle function the speed is used to randomly have the particles move, the size controls the size of the gaemeobject, my physics script takes in the particles mass and the particles velocity. 
 
-UI for Custom 9 level Debugger - Created my own debug console that will print out all of the basic info by defult unless oyu access it from cmd and specify which number you want to look for. To creat the console i used a canvas, slider, and 3 butons.
+- UI for Custom 9 level Debugger - Created my own debug console that will print out all of the basic info by defult unless oyu access it from cmd and specify which number you want to look for. To creat the console i used a canvas, slider, and 3 butons.
 
-Contrler Input - I used unitys new input system to get the input of the controller.
+- Contrler Input - I used unitys new input system to get the input of the controller.
 
-Parralax Scroller - I created a parralx scrtipt that takes in the background of choice then based on the number you assign it, it will move at that speed. once the backghround reachs the end of the camera bounds it will repeat the background.
+- Parralax Scroller - I created a parralx scrtipt that takes in the background of choice then based on the number you assign it, it will move at that speed. once the backghround reachs the end of the camera bounds it will repeat the background.
 
 Post mortem and future work.
