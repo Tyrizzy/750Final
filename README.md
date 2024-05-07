@@ -62,11 +62,11 @@ Mouse and keyboard. A/arrow left and D/arrow right to move, Space to jump, Enter
 
 Controller Gamepad, Left and Right to move, X/A respectivly to jump and select.
 
-Known Issues/Notes - Bugs , issues or limitations with potential workarounds
+Known Issues/Notes - Bugs, issues or limitations with potential workarounds
 
 When switching scenes the menus UI breaks with controller input, however, if you die and restart in the level scene you'll be able to use your controller in the menus. Same happens if you go back to the main menu.
 
-Credits (if you collaborated with another student/if applicable) 
+Credits (if you collaborated with another student/if applicable)
 
 I used fellow classmate Tessla's UI system from prvious projects we worked on together.
 
@@ -86,17 +86,16 @@ Other
 
 NA
 
-Screenshot or 10 second demo video. Example: Link to google drive file  or vimeo, unpublished youtube.
-
+Screenshot or 10 second demo video.
 
 Describe your additional subsystems.
 
-Particle System manager and implementaion
+Particle System manager and implementaion - Created my own ParticleSys script that handles things like the color, mass, size, speed, lifetime, rotation, and a total particle count for my custom debugger. Inside my SpawnParticle function the speed is used to randomly have the particles move, the size controls the size of the gaemeobject, my physics script takes in the particles mass and the particles velocity. 
 
-UI for Custom 9 level Debugger
+UI for Custom 9 level Debugger - Created my own debug console that will print out all of the basic info by defult unless oyu access it from cmd and specify which number you want to look for. To creat the console i used a canvas, slider, and 3 butons.
 
-Contrler Input
+Contrler Input - I used unitys new input system to get the input of the controller.
 
-Parralax Scroller
+Parralax Scroller - I created a parralx scrtipt that takes in the background of choice then based on the number you assign it, it will move at that speed. once the backghround reachs the end of the camera bounds it will repeat the background.
 
 Post mortem and future work.
