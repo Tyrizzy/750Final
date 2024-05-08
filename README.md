@@ -22,7 +22,7 @@ Physics - I created my own PhysicsController script that handled things like lin
 
 - Quadtree Collision Detection - I created my own QuadTree class that handled all the logic to create the bounds, keep track of the level, nodes, and to find all of the objects in the scene that has my created BoundingBox script. This script mimics unity's 2D Box colliders using the sprite renderer to obtain the objects corners and draw them. For the actual detection of the collisions my CollsioionDetectionQuadTree2D script handles that; It constantly checks for the active Objects with my BoundingBox on them then if the two objects touch im using SAT to detect if the objects touched/overlap and if they do they will destroy the object, in my case only if the objects tag is "Player". If its not a player it will calculate the mtv and separate the objects.
 
-- Anti-Cheat Detection & Code Structure - As for the anti-cheat i used the website that Prof. Niko gave us. The algorithm i choose 2.4. Patch ntdll!DbgUiRemoteBreakin() because it checks the ntdll!DbgUiRemoteBreakin() which is always called in tandem with kernel32!DebugActiveProcess(). In doing so when the code detects this it will immediately close the game or even inside of unitys editor. I also changed the stripping level to high and the scripting backend to IL2CPP to give it some more security.
+- Anti-Cheat Detection & Code Structure - As for the anti-cheat i used the website that Prof. Niko gave us. The algorithm I chose is 2.4. Patch ntdll!DbgUiRemoteBreakin() because it checks the ntdll!DbgUiRemoteBreakin() which is always called in tandem with kernel32!DebugActiveProcess(). In doing so when the code detects this it will immediately close the game or even inside of unity’s editor. I also changed the stripping level to high and the scripting backend to IL2CPP to give it some more security.
 
 - UI/UX - For the UI of the game I used my friend Tessla's UI system because it handles really well and fits what i needed it for. I then added my own canvas prefabs and design to it. I also had to create a system that allows you to use your controller to navigate the menus but actually changing the EventSystems first selected menu item.
 
@@ -52,7 +52,7 @@ Features - List the key features of the project. Briefly describe how these feat
 
 - Controller Input - Used unity’s new input system to handle the controllers input for the game and UI. This allows you to play with either the arrow keys, A & D, and a controller.
 
-- Moving Camera, Walls, WallSpawner, EndPointSpawner - The camera and walls are similar in function. The CameraMove script just translats the camera position by a specified number dictated by the difficulty * Time. The MovePipes script works the same except it uses the camera it find the left edge of the camera's nearClipPlane then when its positions is less then it will be destroyed. The PipeSwaner uses the cameras nearClipPlane to spawn the pipes on the right side of the camera at a random Y. The EndPointSpawner takes in a specified vector3 which is where the finish line will be at. It will also calculate the distance from the player to the finish line and update the UI to show how much further you have to go.
+- Moving Camera, Walls, WallSpawner, EndPointSpawner - The camera and walls are similar in function. The CameraMove script just translats the camera position by a specified number dictated by the difficulty * Time. The MovePipes script works the same except it uses the camera it find the left edge of the camera's nearClipPlane then when it's positions is less then it will be destroyed. The PipeSwaner uses the cameras nearClipPlane to spawn the pipes on the right side of the camera at a random Y. The EndPointSpawner takes in a specified vector3 which is where the finish line will be at. It will also calculate the distance from the player to the finish line and update the UI to show how much further you have to go.
 
 - Easy, Medium, and Hard Mode - EasyMode has the values PipeSpeed = 3, CameraSpeed = 3, SpawnTime = 3, EndPoint = new Vector3(50,0,0). MediumMode has the values PipeSpeed = 10, CameraSpeed = 3, SpawnTime = 1, EndPoint = new Vector3(75,0,0). HardMode has the values PipeSpeed = 20, CameraSpeed = 5, SpawnTime = 1, EndPoint = new Vector3(100,0,0).
 
@@ -64,7 +64,10 @@ Gameplay instructions (Controls) Keyboard, Mouse or other hardware if applicable
 
 Known Issues/Notes - Bugs, issues or limitations with potential workarounds
 
-- When switching scenes the menus UI breaks with controller input, however, if you die and restart in the level scene you'll be able to use your controller in the menus. Same happens if you go back to the main menu.
+- When switching back to the main menu scene the menus UI breaks with controller input.
+
+- Another bug that happened literally today a few hours ago is one that breaks the game entirely. When trying to build the game project for some reason it doesn't render my UI anymore. My prefab may be broken because you can't even click on its elements within the editor unless you click them via the inspector hierarchy. See Video below.
+[screen-capture (10).webm](https://github.com/Tyrizzy/750Final/assets/84937548/a0b781d5-1955-4075-a1dd-b0f5f3d3ca4b)
 
 Credits (if you collaborated with another student/if applicable)
 
@@ -88,6 +91,8 @@ Other
 
 Screenshot or 10 second demo video.
 
+https://github.com/Tyrizzy/750Final/assets/84937548/dbdb86cd-b427-4b21-b0c0-2910881bb24e
+
 Describe your additional subsystems.
 
 - Particle System manager and implementation - Created my own ParticleSystem script that handles things like the color, mass, size, speed, lifetime, rotation, and a total particle count for my custom debugger. Inside my SpawnParticle function the speed is used to randomly have the particles move, the size controls the size of the gameobject, my physics script takes in the particle’s mass and the particle's velocity. 
@@ -99,3 +104,5 @@ Describe your additional subsystems.
 - Parallax Scroller - I created a parallax script that takes in the background of choice then based on the number you assign it, it will move at that speed. Once the background reaches the end of the camera bounds it will repeat the background.
 
 Post mortem and future work.
+
+- In terms of a post mortem and future work, I believe everything went well. It was a really fun idea to mess around with especially with all of the extra bits I had to implement. I didn't really have too many issues until today ironically but the few I had was with the UI and controller input, the UI not showing up in a builded version, trying to figure out how to arrange my code in a way where I could create multiple levels and some of the collision detection. There was also quite a bit that went well like using unity's new input system which is surprisingly easy and with that knowledge i can use it in future projects. The concept I picked was simple enough to where I could spend some extra time on implementing the stuff that was required as well as the additional stuff I chose to implement. In the future for personal projects as well as capstone I wanna bring this new found knowledge with me because it will ultimately help with developing the game i want.
